@@ -3,6 +3,7 @@ import 'package:gravity/init_and_run.dart';
 
 void main() {
   initAndRun(Config(
-    apiUrl: 'https://api.gravity.com/',
+    apiUrl: 'localhost:8000/',
+    debug: true,
   ));
 }
