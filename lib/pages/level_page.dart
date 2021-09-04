@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:gravity/widgets/levels/level_1.dart';
 
 class LevelPage extends StatefulWidget {
-  int levelNumber = -1;
-  LevelPage(levelNumber);
+  final int intitialLevelNumber = -1;
+  LevelPage(intitialLevelNumber);
 
   @override
   State<StatefulWidget> createState() => _LevelPage();
