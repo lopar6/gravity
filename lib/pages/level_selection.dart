@@ -17,7 +17,8 @@ class _LevelSelection extends State<LevelSelection> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => LevelPage()),
+              // todo change this to load the actual selected
+              MaterialPageRoute(builder: (context) => LevelPage(0)),
             );
           },
           child: Text("Level #1"))
