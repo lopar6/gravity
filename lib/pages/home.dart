@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:gravity/pages/universe_selection.dart';
 import 'package:gravity/services/app_state.dart';
 import 'package:gravity/widgets/tap_count.dart';
 
@@ -31,16 +33,15 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: [
-          Center(child: Text(_title)),
-          TapCount(),
           Center(
             child: ElevatedButton(
               onPressed: () {
-                var tapCount = AppState.instance.tapCount;
-                print('TapCount: ${tapCount.value + 1}');
-                tapCount.add(tapCount.value + 1);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => UniverseSelection()),
+                );
               },
-              child: Text('Tap Me'),
+              child: Text('Play'),
             ),
           ),
         ],
