@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:gravity/pages/level.dart';
+import 'package:gravity/pages/level_page.dart';
 
 class LevelSelection extends StatefulWidget {
   @override
@@ -17,7 +17,7 @@ class _LevelSelection extends State<LevelSelection> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Level()),
+              MaterialPageRoute(builder: (context) => LevelPage()),
             );
           },
           child: Text("Level #1"))

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class Level extends StatefulWidget {
+class LevelPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _Level();
+  State<StatefulWidget> createState() => _LevelPage();
 }
 
-class _Level extends State<Level> {
+class _LevelPage extends State<LevelPage> {
   @override
   Widget build(BuildContext context) {
     return Text("implement levels");
