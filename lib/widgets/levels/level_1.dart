@@ -1,13 +1,14 @@
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 
-class Level1 extends StatefulWidget {
+class Level1 extends BaseGame {
   @override
-  State<StatefulWidget> createState() => _Level1();
-}
+  void render(Canvas canvas) {
+    // TODO: implement render
+  }
 
-class _Level1 extends State<Level1> {
   @override
-  Widget build(BuildContext context) {
-    return Text("Implement me please");
+  void update(double t) {
+    // TODO: implement update
   }
 }
