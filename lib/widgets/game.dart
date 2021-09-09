@@ -7,6 +7,10 @@ import 'package:gravity/widgets/components/player.dart';
 
 class GravityGame extends BaseGame with PanDetector {
   double creationTimer = 0.0;
+  Vector2 _pointerStartPosition = Vector2.zero();
+  Vector2 _pointerCurrentPosition = Vector2.zero();
+  bool _isDragging = false;
+  Player player = Player();
 
   @override
   Future<void> onLoad() async {
@@ -40,5 +44,26 @@ class GravityGame extends BaseGame with PanDetector {
       // add(Rocket());
     }
     super.update(dt);
+  }
+
+  @override
+  void onPanStart(DragStartInfo info) {
+    _pointerStartPosition = info.eventPosition.global;
+    print("onPanStart");
+    if (_pointerStartPosition == player.position) {
+      _isDragging = true;
+    }
+  }
+
+  @override
+  void onPanEnd(DragEndInfo info) {}
+
+  @override
+  void onPanUpdate(DragUpdateInfo info) {
+    _pointerCurrentPosition = info.eventPosition.global;
+    print("onPanUpdate");
+    if (_isDragging) {
+      player.position = _pointerCurrentPosition;
+    }
   }
 }
