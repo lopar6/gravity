@@ -1,8 +1,8 @@
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
-import 'package:flame_forge2d/forge2d_game.dart';
 import 'package:flame/gestures.dart';
 import 'package:flame/sprite.dart';
+import 'package:flame_forge2d/forge2d_game.dart';
 import 'package:flutter/material.dart';
 
 import 'package:gravity/widgets/components/goal.dart';

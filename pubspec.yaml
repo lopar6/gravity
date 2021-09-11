@@ -24,7 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
   rxdart:
-  flame: 1.0.0-rc10
+  flame: ^1.0.0-releasecandidate.12
+  flame_forge2d: ^0.7.3-releasecandidate.12
 
 
   # The following adds the Cupertino Icons font to your application.
