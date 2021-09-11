@@ -66,18 +66,19 @@ class GravityGame extends BaseGame with PanDetector {
   @override
   void onPanStart(DragStartInfo info) {
     _pointerStartPosition = info.eventPosition.global;
-    print("onPanStart");
-    _isDragging = true;
-    if (_pointerStartPosition == planet.position) {}
+    if (_pointerStartPosition.distanceTo(planet.center) < planet.size.x) {
+      _isDragging = true;
+    }
   }
 
   @override
-  void onPanEnd(DragEndInfo info) {}
+  void onPanEnd(DragEndInfo info) {
+    _isDragging = false;
+  }
 
   @override
   void onPanUpdate(DragUpdateInfo info) {
     _pointerCurrentPosition = info.eventPosition.global;
-    print("onPanUpdate");
     if (_isDragging) {
       planet.position = _pointerCurrentPosition;
     }
