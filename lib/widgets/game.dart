@@ -39,6 +39,17 @@ class GravityGame extends BaseGame with PanDetector {
     add(player);
     player.anchor = Anchor.bottomCenter;
     planet.anchor = Anchor.topCenter;
+
+    // todo(here) add getting JSON values for ship launch direct, starting planets and more...
+  }
+
+  void launchShip() {
+    player.setMoveDirection(Vector2(0, -1));
+    player.setSpeed(150);
+  }
+
+  void softReset() {
+    player.reset();
   }
 
   @override

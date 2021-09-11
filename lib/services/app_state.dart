@@ -1,6 +1,7 @@
 import 'package:gravity/config.dart';
 import 'package:rxdart/rxdart.dart';
 
+// singleton
 class AppState {
   BehaviorSubject<int> tapCount = BehaviorSubject.seeded(0);
 

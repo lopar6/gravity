@@ -4,14 +4,16 @@ import 'package:gravity/widgets/game.dart';
 
 class Player extends SpriteComponent {
   Vector2 _moveDirection = Vector2.zero();
-
-  double _speed = 300;
+  Vector2 _initialPosition = Vector2.zero();
+  double _speed = 0;
 
   Player({
     Sprite? sprite,
     Vector2? position,
     Vector2? size,
-  }) : super(sprite: sprite, position: position, size: size);
+  }) : super(sprite: sprite, position: position, size: size) {
+    _initialPosition = position!.clone();
+  }
 
   @override
   void update(double dt) {
@@ -22,5 +24,14 @@ class Player extends SpriteComponent {
 
   void setMoveDirection(Vector2 newMoveDirection) {
     _moveDirection = newMoveDirection;
+  }
+
+  void setSpeed(double speed) {
+    _speed = speed;
+  }
+
+  void reset() {
+    _speed = 0;
+    position = _initialPosition;
   }
 }
