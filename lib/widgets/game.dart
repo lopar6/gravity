@@ -3,6 +3,7 @@ import 'package:flame/game.dart';
 import 'package:flame/gestures.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/material.dart';
+import 'package:gravity/widgets/components/planet.dart';
 import 'package:gravity/widgets/components/player.dart';
 
 class GravityGame extends BaseGame with PanDetector {
@@ -10,7 +11,8 @@ class GravityGame extends BaseGame with PanDetector {
   Vector2 _pointerStartPosition = Vector2.zero();
   Vector2 _pointerCurrentPosition = Vector2.zero();
   bool _isDragging = false;
-  Player player = Player();
+  late Player player;
+  late Planet planet;
 
   @override
   Future<void> onLoad() async {
@@ -21,14 +23,22 @@ class GravityGame extends BaseGame with PanDetector {
         columns: 8,
         rows: 6);
 
-    Player player = Player(
+    player = Player(
       sprite: spriteSheet.getSpriteById(9),
       size: Vector2(64, 64),
+      position: Vector2(viewport.canvasSize.x / 2, viewport.canvasSize.y - 80),
+    );
+
+    planet = Planet(
+      sprite: spriteSheet.getSpriteById(24),
+      size: Vector2(128, 128),
       position: viewport.canvasSize / 2,
     );
-    add(player);
 
+    add(planet);
+    add(player);
     player.anchor = Anchor.bottomCenter;
+    planet.anchor = Anchor.topCenter;
   }
 
   @override
@@ -39,10 +49,6 @@ class GravityGame extends BaseGame with PanDetector {
   @override
   void update(double dt) {
     creationTimer += dt;
-    if (creationTimer >= 1) {
-      creationTimer = 0;
-      // add(Rocket());
-    }
     super.update(dt);
   }
 
@@ -50,9 +56,8 @@ class GravityGame extends BaseGame with PanDetector {
   void onPanStart(DragStartInfo info) {
     _pointerStartPosition = info.eventPosition.global;
     print("onPanStart");
-    if (_pointerStartPosition == player.position) {
-      _isDragging = true;
-    }
+    _isDragging = true;
+    if (_pointerStartPosition == planet.position) {}
   }
 
   @override
@@ -63,7 +68,7 @@ class GravityGame extends BaseGame with PanDetector {
     _pointerCurrentPosition = info.eventPosition.global;
     print("onPanUpdate");
     if (_isDragging) {
-      player.position = _pointerCurrentPosition;
+      planet.position = _pointerCurrentPosition;
     }
   }
 }

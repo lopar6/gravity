@@ -7,4 +7,8 @@ class Planet extends SpriteComponent {
     Vector2? position,
     Vector2? size,
   }) : super(sprite: sprite, position: position, size: size);
+
+  void isInitialized() {
+    print("\n\n\n\n I sure am initialized\n\n\n\n\n");
+  }
 }
