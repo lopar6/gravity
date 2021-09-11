@@ -1,18 +1,22 @@
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
+import 'package:flame_forge2d/forge2d_game.dart';
 import 'package:flame/gestures.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/material.dart';
+
+import 'package:gravity/widgets/components/goal.dart';
 import 'package:gravity/widgets/components/planet.dart';
 import 'package:gravity/widgets/components/player.dart';
 
-class GravityGame extends BaseGame with PanDetector {
+class GravityGame extends Forge2DGame with PanDetector {
   double creationTimer = 0.0;
   Vector2 _pointerStartPosition = Vector2.zero();
   Vector2 _pointerCurrentPosition = Vector2.zero();
   bool _isDragging = false;
   late Player player;
   late Planet planet;
+  late Goal goal;
 
   @override
   Future<void> onLoad() async {
@@ -30,16 +34,24 @@ class GravityGame extends BaseGame with PanDetector {
     );
 
     planet = Planet(
-      sprite: spriteSheet.getSpriteById(24),
+        sprite: spriteSheet.getSpriteById(24),
+        size: Vector2(128, 128),
+        position: viewport.canvasSize / 2,
+        mass: 200);
+
+    goal = Goal(
+      sprite: spriteSheet.getSpriteById(29),
       size: Vector2(128, 128),
-      position: viewport.canvasSize / 2,
+      position: Vector2(viewport.canvasSize.x / 4, 0),
     );
 
+    add(goal);
     add(planet);
     add(player);
-    player.anchor = Anchor.bottomCenter;
-    planet.anchor = Anchor.topCenter;
 
+    planet.anchor = Anchor.topCenter;
+    player.anchor = Anchor.bottomCenter;
+    goal.anchor = Anchor.topCenter;
     // todo(here) add getting JSON values for ship launch direct, starting planets and more...
   }
 
@@ -63,6 +75,7 @@ class GravityGame extends BaseGame with PanDetector {
     super.update(dt);
   }
 
+  //todo improve touch detection
   @override
   void onPanStart(DragStartInfo info) {
     _pointerStartPosition = info.eventPosition.global;
