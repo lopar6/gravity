@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:gravity/pages/universe_selection.dart';
 import 'package:gravity/services/app_state.dart';
-import 'package:gravity/widgets/tap_count.dart';
 
 class HomePage extends StatefulWidget {
   final String initialTitle;
@@ -27,9 +26,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.initialTitle),
-        actions: [
-          TapCount(),
-        ],
+        actions: [],
       ),
       body: Column(
         children: [
