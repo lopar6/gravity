@@ -3,6 +3,7 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:gravity/app.dart';
 import 'package:gravity/config.dart';
+import 'package:gravity/pages/home.dart';
 import 'package:gravity/services/app_state.dart';
 import 'package:gravity/widgets/game.dart';
 
@@ -12,6 +13,10 @@ void initAndRun(Config config) {
   Flame.device.fullScreen();
 
   AppState.instance.config = config;
-  // Level game = Level();
+
+  //! temp to adjust gameplay
   runApp(GameWidget(game: GravityGame()));
+
+  //! use this for normal functionality
+  // runApp(App());
 }
