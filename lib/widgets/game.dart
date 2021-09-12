@@ -18,14 +18,17 @@ class GravityGame extends Forge2DGame with PanDetector {
   late Planet planet;
   late Goal goal;
 
+  GravityGame() : super(gravity: Vector2(0, 0), zoom: 1);
+
   @override
   Future<void> onLoad() async {
     await images.load('simpleSpace_tilesheet@2.png');
 
     final spriteSheet = SpriteSheet.fromColumnsAndRows(
-        image: images.fromCache('simpleSpace_tilesheet@2.png'),
-        columns: 8,
-        rows: 6);
+      image: images.fromCache('simpleSpace_tilesheet@2.png'),
+      columns: 8,
+      rows: 6,
+    );
 
     player = Player(
       sprite: spriteSheet.getSpriteById(9),
@@ -34,10 +37,11 @@ class GravityGame extends Forge2DGame with PanDetector {
     );
 
     planet = Planet(
-        sprite: spriteSheet.getSpriteById(24),
-        size: Vector2(128, 128),
-        position: viewport.canvasSize / 2,
-        mass: 200);
+      sprite: spriteSheet.getSpriteById(24),
+      size: Vector2(128, 128),
+      position: viewport.canvasSize / 2,
+      mass: 200,
+    );
 
     goal = Goal(
       sprite: spriteSheet.getSpriteById(29),
@@ -57,7 +61,7 @@ class GravityGame extends Forge2DGame with PanDetector {
 
   void launchShip() {
     player.setMoveDirection(Vector2(0, -1));
-    player.setSpeed(150);
+    player.speed = 150;
   }
 
   void softReset() {

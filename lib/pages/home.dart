@@ -4,9 +4,9 @@ import 'package:gravity/pages/universe_selection.dart';
 import 'package:gravity/services/app_state.dart';
 
 class HomePage extends StatefulWidget {
-  final String initialTitle;
+  final String title;
 
-  HomePage({required this.initialTitle});
+  HomePage({required this.title});
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    _title = widget.initialTitle;
+    _title = widget.title;
     super.initState();
   }
 
@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.initialTitle),
+        title: Text(widget.title),
         actions: [],
       ),
       body: Column(
@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
                   MaterialPageRoute(builder: (context) => UniverseSelection()),
                 );
               },
-              child: Text('Play'),
+              child: const Text('Play'),
             ),
           ),
         ],

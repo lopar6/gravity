@@ -2,10 +2,15 @@ import 'package:flame/components.dart';
 import 'package:flame/gestures.dart';
 
 class Planet extends SpriteComponent {
-  late double? _mass;
+  double _mass;
 
-  Planet({Sprite? sprite, Vector2? position, Vector2? size, double? mass})
-      : super(sprite: sprite, position: position, size: size) {
-    _mass = mass;
+  Planet({
+    required Sprite sprite,
+    required Vector2 position,
+    required Vector2 size,
+    required double mass,
+  })  : _mass = mass,
+        super(sprite: sprite, position: position, size: size) {
+    anchor = Anchor.center;
   }
 }

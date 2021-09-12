@@ -8,12 +8,13 @@ class Player extends SpriteComponent {
   double _speed = 0;
 
   Player({
-    Sprite? sprite,
-    Vector2? position,
-    Vector2? size,
-  }) : super(sprite: sprite, position: position, size: size) {
-    _initialPosition = position!.clone();
-  }
+    required Sprite sprite,
+    required Vector2 position,
+    required Vector2 size,
+  })  : _initialPosition = position.clone(),
+        super(sprite: sprite, position: position, size: size) {
+          anchor = Anchor.center;
+        }
 
   @override
   void update(double dt) {
@@ -26,7 +27,7 @@ class Player extends SpriteComponent {
     _moveDirection = newMoveDirection;
   }
 
-  void setSpeed(double speed) {
+  set speed(double speed) {
     _speed = speed;
   }
 

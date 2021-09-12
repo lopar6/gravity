@@ -3,17 +3,17 @@ import 'package:gravity/widgets/game.dart';
 
 class LaunchButton extends StatefulWidget {
   static const String ID = 'LaunchButton';
-  late GravityGame gameRef;
+  late final GravityGame gameRef;
   LaunchButton(this.gameRef);
 
   @override
   State<StatefulWidget> createState() {
     print("[Products Manager] createState()");
-    return _launchButton();
+    return _LaunchButton();
   }
 }
 
-class _launchButton extends State<LaunchButton> {
+class _LaunchButton extends State<LaunchButton> {
   late GravityGame _gameRef;
   bool isLaunched = false;
 
@@ -28,10 +28,9 @@ class _launchButton extends State<LaunchButton> {
     return Align(
       alignment: Alignment.bottomRight,
       child: TextButton(
-        child: Icon(
-          Icons.play_arrow,
-          color: Colors.white,
-        ),
+        child: isLaunched
+            ? const Icon(Icons.pause, color: Colors.white)
+            : const Icon(Icons.play_arrow, color: Colors.white),
         onPressed: () {
           if (isLaunched) {
             _gameRef.softReset();
