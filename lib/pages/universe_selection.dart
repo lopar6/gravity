@@ -10,17 +10,24 @@ class UniverseSelection extends StatefulWidget {
 class _UniverseSelection extends State<UniverseSelection> {
   @override
   Widget build(BuildContext context) {
-    return Column(children: <Widget>[
-      Text('Select Your Universe'),
-      Text('\nImplement multiple universes here'),
-      ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => LevelSelection()),
-            );
-          },
-          child: Text("Universe #1"))
-    ]);
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text('Select Your Universe'),
+            const Text('\nImplement multiple universes here'),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LevelSelection()),
+                  );
+                },
+                child: const Text("Universe #1"))
+          ],
+        ),
+      ),
+    );
   }
 }

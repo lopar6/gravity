@@ -7,9 +7,10 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-          primaryColor: Colors.black,
-          secondaryHeaderColor: Colors.deepPurpleAccent),
-      home: HomePage(initialTitle: 'Gravity Totality'),
+        primaryColor: Colors.black,
+        secondaryHeaderColor: Colors.deepPurpleAccent,
+      ),
+      home: HomePage(title: 'Gravity Totality'),
     );
   }
 }
