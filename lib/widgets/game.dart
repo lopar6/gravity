@@ -33,7 +33,10 @@ class GravityGame extends Forge2DGame with PanDetector {
     player = Player(
       sprite: spriteSheet.getSpriteById(9),
       size: Vector2(64, 64),
-      position: Vector2(viewport.canvasSize.x / 2, viewport.canvasSize.y - 80),
+      position:
+          Vector2(viewport.canvasSize.x / 2, -(viewport.canvasSize.y - 80)),
+      world: world,
+      angle: 0.0,
     );
 
     planet = Planet(
@@ -52,15 +55,11 @@ class GravityGame extends Forge2DGame with PanDetector {
     add(goal);
     add(planet);
     add(player);
-
-    planet.anchor = Anchor.topCenter;
-    player.anchor = Anchor.bottomCenter;
-    goal.anchor = Anchor.topCenter;
     // todo(here) add getting JSON values for ship launch direct, starting planets and more...
   }
 
   void launchShip() {
-    player.setMoveDirection(Vector2(0, -1));
+    player.setMoveDirection(Vector2(0, 1));
     player.speed = 150;
   }
 

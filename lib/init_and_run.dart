@@ -16,11 +16,11 @@ void initAndRun(Config config) {
   AppState.instance.config = config;
 
   //! temp to adjust gameplay
-  // runApp(LevelPage(
-  //   levelNumber: 0,
-  //   game: GravityGame(),
-  // ));
+  runApp(LevelPage(
+    levelNumber: 0,
+    game: GravityGame(),
+  ));
 
   //! use this for normal functionality
-  runApp(App());
+  // runApp(App());
 }
