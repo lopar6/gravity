@@ -17,7 +17,6 @@ class GravityGame extends Forge2DGame with PanDetector {
   late Player player;
   late Planet planet;
   late Goal goal;
-
   GravityGame() : super(gravity: Vector2(0, 0), zoom: 1);
 
   @override
@@ -58,13 +57,17 @@ class GravityGame extends Forge2DGame with PanDetector {
     // todo(here) add getting JSON values for ship launch direct, starting planets and more...
   }
 
+  void spawnPlayer() {
+    add(player);
+  }
+
   void launchShip() {
-    player.setMoveDirection(Vector2(0, 1));
-    player.speed = 150;
+    // player.setMoveDirection(Voector2(0, 1));
+    player.launch();
   }
 
   void softReset() {
-    player.reset();
+    add(player);
   }
 
   @override
